@@ -8,6 +8,7 @@
 import optparse
 import re
 import sys
+import config
 
 
 USAGE = re.compile(r'(?s)\s*usage: (.*?)(\n[ \t]*\n|$)')
@@ -36,7 +37,7 @@ def parse(docstring, arglist=None):
     if not match: raise ParsingError('ERROR: Can not find the option string')
     optlines = match.group(1).splitlines()
     try:
-        p = optparse.OptionParser(optlines[0])
+        p = optparse.OptionParser(optlines[0],version=config.VERSION)
         for line in optlines[1:]:
             opt, help=line.split(':')[:2]
             short,long=opt.split(',')[:2]
@@ -49,4 +50,6 @@ def parse(docstring, arglist=None):
                 action = action, help = help.strip())
     except (IndexError, ValueError):
         raise ParsingError('ERROR: Can not parse the option string correctly')
+    
+
     return p.parse_args(arglist)

@@ -42,7 +42,9 @@ SOCKET_TIMEOUT = config.SOCKET_TIMEOUT  # global for all socket operations
         
         
 class LoadManager(Thread):
-    def __init__(self, num_agents, interval, rampup, log_msgs, runtime_stats, error_queue, output_dir=None, test_name=None):
+    def __init__(self, num_agents, interval, rampup, log_msgs, runtime_stats, error_queue, output_dir=None, test_name=None,is_block=True):
+        global HTTP_DEBUG
+        HTTP_DEBUG=HTTP_DEBUG and is_block
         Thread.__init__(self)
         
         socket.setdefaulttimeout(SOCKET_TIMEOUT)  # this affects all socket operations (including HTTP)

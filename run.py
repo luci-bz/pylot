@@ -55,9 +55,6 @@ gui = config.GUI
 opt, args = optionparse.parse(__doc__)
 
 
-if not opt and not args:
-    print 'version: %s' % VERSION
-    optionparse.exit()
 try:
     if opt.agents:
         agents = int(opt.agents)
@@ -130,7 +127,7 @@ else:  # console/shell mode
         print '  output directory:           %s' % output_dir
     print '\n'
     try:    
-        pylot_console.main(agents, rampup, interval, duration, tc_xml_filename, log_msgs, output_dir, test_name)
+        pylot_console.main(agents, rampup, interval, duration, tc_xml_filename, log_msgs, output_dir, test_name,is_block=False)
     except KeyboardInterrupt:
         print '\nInterrupt'
         sys.exit(1)
