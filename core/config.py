@@ -29,7 +29,7 @@ SMOOTH_TP_GRAPH = 1  # secs.  smooth/dampen throughput graph based on an interva
 SOCKET_TIMEOUT = 300  # secs
 COOKIES_ENABLED = True
 
-HTTP_DEBUG = True# only useful when combined with blocking mode  
+HTTP_DEBUG = False# only useful when combined with blocking mode  
 BLOCKING = False  # stdout blocked until test finishes, then result is returned as XML
 GUI = False
 
